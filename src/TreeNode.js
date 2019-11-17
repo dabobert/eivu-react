@@ -4,11 +4,17 @@ class TreeNode extends React.Component {
   constructor(props) {
     super();
     this.state = {};
+
+    this.handleMouseOver = this.handleMouseOver.bind(this);
+  }
+
+  handleMouseOver() {
+    console.log(`TreeNode ${this.props.traits.vue_id}: ${JSON.stringify(this.props)}`)
   }
 
   render() {
     return(
-      <li>
+      <li onMouseOver={this.handleMouseOver}>
         <dl>
           <dt>Name</dt>
           <dd>{ this.props.traits.name }</dd>
