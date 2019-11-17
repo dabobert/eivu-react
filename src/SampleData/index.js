@@ -467,3 +467,9 @@ const sampleData = {
     }
   }
 };
+
+
+console.log('from sampleData.js');
+console.log(sampleData);
+
+export default sampleData;
