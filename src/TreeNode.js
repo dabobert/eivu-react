@@ -1,6 +1,11 @@
 import React from 'react';
 
 class TreeNode extends React.Component {
+  constructor(props) {
+    super();
+    this.state = {};
+  }
+
   render() {
     return(
       <li id="foo">
