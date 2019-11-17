@@ -11,11 +11,11 @@ class TreeNode extends React.Component {
       <li id="foo">
         <dl>
           <dt>Name</dt>
-          <dd>{ this.props.name }</dd>
+          <dd>{ this.props.traits.name }</dd>
           <dt>Entry Type</dt>
-          <dd>{ this.props.entry_type }</dd>
+          <dd>{ this.props.traits.entry_type }</dd>
           <dt>Children</dt>
-          <dd>{ this.props.children }</dd>
+          <dd>{ this.props.traits.children }</dd>
         </dl>
       </li>
     )
