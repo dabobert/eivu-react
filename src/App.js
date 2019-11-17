@@ -5,9 +5,9 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <ul className="App">
       <CloudFile />
-    </div>
+    </ul>
   );
 }
 
