@@ -8,7 +8,7 @@ class TreeNode extends React.Component {
 
   render() {
     return(
-      <li id="foo">
+      <li>
         <dl>
           <dt>Name</dt>
           <dd>{ this.props.traits.name }</dd>
