@@ -6,7 +6,7 @@ import './App.css';
 import sampleData from './SampleData';
 
 function App() {
-  const treeNodeComponents = sampleData.root.data.map( node => <TreeNode key={node.vue_id} traits={node} />)
+  const treeNodeComponents = sampleData.root.data.map( node => <TreeNode key={node.vue_id} node={node} />)
 
   return (
     <ul className="App">
