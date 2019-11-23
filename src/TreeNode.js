@@ -1,23 +1,33 @@
 import React from 'react';
 import CloudFile from './CloudFile';
+import API from './API'
 
 class TreeNode extends React.Component {
   constructor(props) {
     super();
-    this.state = {};
-
-    // this.handleMouseOver = this.handleMouseOver.bind(this);
+    this.state = {
+      childrenLoaded: false,
+      childrenVisible: false,
+      childComponents: <li>Loading...</li>
+    };
     this.handleGroupingOnClick = this.handleGroupingOnClick.bind(this);
   }
 
-
-  // handleMouseOver() {
-  //   // console.log(`TreeNode ${this.props.node.vue_id}: ${JSON.stringify(this.props)}`)
-  // }
-  handleGroupingOnClick() {
-    alert("hey")
+  async handleGroupingOnClick() {
+    const treeRoot = await API.get('folders');
+    if (this.state.childrenLoaded === false) {
+      const childData = await API.get(`folders/${this.props.node.id}`);
+      console.log(JSON.stringify(childData.data.data.children))
+      childData.data.data.children.map(node => <TreeNode key={node.vue_id} node={node} />);
+      // this.setState((prevState, props) => {
+      this.setState(prevState => {
+        return {
+        ...prevState,
+        childComponents: <li>foo</li>
+      }
+      })
+    }
   }
-
 
 
 
@@ -45,15 +55,8 @@ class TreeNode extends React.Component {
       <li onMouseOver={this.handleMouseOver}>
         { this.props.node.entry_type === 'grouping' && <div onClick={this.handleGroupingOnClick}>{this.props.node.name}</div> }
         { this.props.node.entry_type === 'file' && <ul><CloudFile node={this.props.node} /></ul> }
-          {/*<dt>Name</dt>*/}
-          {/*<dd>{ this.props.node.name }</dd>*/}
-          {/*<dt>Entry Type</dt>*/}
-          {/*<dd>{ this.props.node.entry_type }</dd>*/}
-          {/*<dt>Children</dt>*/}
-          {/*<dd>{ this.props.node.children }</dd>*/}
-        {/*</dl>*/}
+        <ul > { this.state.childComponents }</ul>
       </li>
-
     )
   }
 }
