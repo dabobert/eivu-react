@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 class CloudFile extends React.Component {
 
   constructor() {
@@ -13,11 +14,11 @@ class CloudFile extends React.Component {
 
   render() {
     return(
-      <li>
-        <span>Track Name</span>
+      <div>CloudFile:
+        <span>{this.props.node.name}</span>
         <span>(visit)</span>
         <span>(edit)</span>
-      </li>
+      </div>
     )
   }
 }

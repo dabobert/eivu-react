@@ -1,4 +1,5 @@
 import React from 'react';
+import CloudFile from './CloudFile';
 
 class TreeNode extends React.Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class TreeNode extends React.Component {
     return(
       <li onMouseOver={this.handleMouseOver}>
         { this.props.node.entry_type === 'grouping' && <div onClick={this.handleGroupingOnClick}>{this.props.node.name}</div> }
+        { this.props.node.entry_type === 'file' && <ul><CloudFile node={this.props.node} /></ul> }
           {/*<dt>Name</dt>*/}
           {/*<dd>{ this.props.node.name }</dd>*/}
           {/*<dt>Entry Type</dt>*/}
