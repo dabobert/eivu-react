@@ -18,12 +18,15 @@ class TreeNode extends React.Component {
     if (this.state.childrenLoaded === false) {
       const childData = await API.get(`folders/${this.props.node.id}`);
       console.log(JSON.stringify(childData.data.data.children))
-      childData.data.data.children.map(node => <TreeNode key={node.vue_id} node={node} />);
+
+
+      const childComponents = childData.data.data.children.map(node => <TreeNode key={node.vue_id} node={node} />);
       // this.setState((prevState, props) => {
-      this.setState(prevState => {
+      this.setState((prevState, props) => {
         return {
         ...prevState,
-        childComponents: <li>foo</li>
+        childrenVisible: !prevState.childrenVisible,
+        childComponents: childComponents
       }
       })
     }
@@ -55,7 +58,7 @@ class TreeNode extends React.Component {
       <li onMouseOver={this.handleMouseOver}>
         { this.props.node.entry_type === 'grouping' && <div onClick={this.handleGroupingOnClick}>{this.props.node.name}</div> }
         { this.props.node.entry_type === 'file' && <ul><CloudFile node={this.props.node} /></ul> }
-        <ul > { this.state.childComponents }</ul>
+        <ul > { this.props.node.entry_type === 'grouping' && this.state.childComponents }</ul>
       </li>
     )
   }
