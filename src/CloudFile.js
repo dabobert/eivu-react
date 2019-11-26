@@ -16,7 +16,7 @@ class CloudFile extends React.Component {
     return(
       <div>CloudFile:
         <span>{this.props.node.name}</span>
-        <span>(visit)</span>
+        <span><a href={ this.props.node.url }>(visit)</a></span>
         <span>(edit)</span>
       </div>
     )
