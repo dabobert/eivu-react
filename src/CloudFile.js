@@ -1,26 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 
-class CloudFile extends React.Component {
+function CloudFile(props) {
 
-  constructor() {
-    //super must be called before state can be set
-    super(); 
-    this.state = {  
-      // message: "my friend (from state)!";
-    };  
-    // this.updateMessage = this.updateMessage.bind(this);   
-   }
 
-  render() {
-    return(
-      <div>CloudFile:
-        <span>{this.props.node.name}</span>
-        <span><a href={ this.props.node.url }>(visit)</a></span>
-        <span>(edit)</span>
-      </div>
-    )
-  }
+  return(
+    <div>CloudFile:
+      <span>{props.node.name}</span>
+      <span><a href={ props.node.url }>(visit)</a></span>
+      <span>(edit)</span>
+    </div>
+  )
 }
 
 
