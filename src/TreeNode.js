@@ -5,39 +5,27 @@ import API from './API'
 function TreeNode(props) {
   const node = props.node;
   const { name, entry_type } = node
-  const [ childrenLoaded, setChildrenLoaded ] = useState(false);
+  const [ childrenNotLoaded, setChildrenNotLoaded ] = useState(true);
   const [ childrenVisible, setChildrenVisible ] = useState(false);
   const [ childComponents, setChildComponents ] = useState(<li>Loading...</li>);
 
-
-  // async handleGroupingOnClick() {
-  //   const treeRoot = await API.get('folders');
-  //   if (this.state.childrenLoaded === false) {
-  //     const childData = await API.get(`folders/${node.id}`);
-  //     const childComponents = childData.data.data.children.map(node => <TreeNode key={node.vue_id} node={node} />);
-  //     this.setState((prevState, props) => {
-  //       return {
-  //         childrenVisible: !prevState.childrenVisible,
-  //         childComponents: childComponents
-  //       }
-  //     })
-  //   } 
-  //   else {
-  //     this.setState((prevState, props) => {
-  //       return {
-  //         childrenVisible: !prevState.childrenVisible
-  //       }
-  //     })
-  //   }
-  // }
-
-  function handleMouseOver() {
-    // console.log(node)
+  function toggleChildren() {
+    setChildrenVisible( prevVisibility => !prevVisibility)
   }
 
-  function handleGroupingOnClick() {
-    console.log(node)
+  async function loadChildren() {
+    if (childrenNotLoaded) {
+      const childData = await API.get(`folders/${node.id}`);
+      const childComponents = childData.data.data.children.map(node => <TreeNode key={node.vue_id} node={node} />);
+      setChildComponents(childComponents);
+      setChildrenNotLoaded(false);
+    }
   }
+
+
+
+
+
 
   function styles() {
     if (childrenVisible) {
@@ -73,8 +61,9 @@ function TreeNode(props) {
 // </template>
 
   return(
-    <li onMouseOver={handleMouseOver}>
-      { node.entry_type === 'grouping' && <div onClick={handleGroupingOnClick}>{node.name}</div> }
+    <li>
+      {/*{ node.entry_type === 'grouping' && <div onClick={handleGroupingOnClick}>{node.name}</div> }*/}
+      { node.entry_type === 'grouping' && <div onClick={() => { toggleChildren(); loadChildren()}}>{node.name}</div> }
       { node.entry_type === 'file' && <CloudFile node={node} /> }
       <ul style={ styles() }> { node.entry_type === 'grouping' && childComponents }</ul>
     </li>
