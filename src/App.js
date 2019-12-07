@@ -8,7 +8,9 @@ import API from './API';
 
 function App() {
   return (
-    <TreeRoot />
+    <ul>
+      <TreeRoot />
+    </ul>
   );
 }
 

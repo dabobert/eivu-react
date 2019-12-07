@@ -14,9 +14,9 @@ function TreeRoot() {
   }, [])
 
   return (
-    <ul className="TreeRoot">
+    <React.Fragment>
       { isLoading ? <li>Loading....</li> : treeNodeComponents }
-    </ul>
+    </React.Fragment>
   );
 }
 
