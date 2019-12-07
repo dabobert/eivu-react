@@ -4,7 +4,7 @@ import API from './API'
 
 function TreeRoot() {
   const [ isLoading, setIsLoading ] = useState(true);
-  const [ treeNodeComponents, setTreeNodeComponents] = useState([]);
+  const [ treeNodeComponents, setTreeNodeComponents] = useState(<li>Loading....</li>);
 
   useEffect( async () => {
     const treeRoot = await API.get('folders'); //https://designrevision.com/react-axios/
@@ -15,7 +15,7 @@ function TreeRoot() {
 
   return (
     <React.Fragment>
-      { isLoading ? <li>Loading....</li> : treeNodeComponents }
+      { treeNodeComponents }
     </React.Fragment>
   );
 }
