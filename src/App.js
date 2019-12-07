@@ -7,9 +7,13 @@ import './App.css';
 import API from './API';
 
 function App() {
+  const root = {
+    entry_type: 'grouping',
+    name: 'Welcome'
+  }
   return (
     <ul>
-      <TreeRoot />
+      <TreeNode isRoot={true} node={root} />
     </ul>
   );
 }

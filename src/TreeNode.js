@@ -9,10 +9,24 @@ function TreeNode(props) {
   const [ childrenVisible, setChildrenVisible ] = useState(false);
   const [ childComponents, setChildComponents ] = useState(<li>Loading...</li>);
 
+
+  // used when root element
+  useEffect( async () => {
+    if (props.isRoot){
+      const treeRoot = await API.get('folders'); //https://designrevision.com/react-axios/
+      const treeNodeComponents = treeRoot.data.data.map( node => <TreeNode key={node.vue_id} node={node} />)
+      setChildComponents(treeNodeComponents);
+      setChildrenNotLoaded(false)
+    }
+  }, [])
+
+
+  // used when NOT root element
   function toggleChildren() {
     setChildrenVisible( prevVisibility => !prevVisibility)
   }
 
+  // used when NOT root element
   async function loadChildren() {
     if (childrenNotLoaded) {
       const childData = await API.get(`folders/${node.id}`);
@@ -21,11 +35,6 @@ function TreeNode(props) {
       setChildrenNotLoaded(false);
     }
   }
-
-
-
-
-
 
   function styles() {
     if (childrenVisible) {
@@ -38,27 +47,6 @@ function TreeNode(props) {
       })
     }
   }
-
-
-
-//<template>
-//  <li v-bind:id="node.id" v-bind:class="node.entry_type">
-//    <span v-if="node.entry_type == 'grouping'">
-//      <div v-bind:class="node.klass" v-bind:type="node.entry_type" @click="toggleChildren">{{ node.name }}</div>
-//    </span>
-//    <span v-else-if="node.entry_type == 'file'">
-//      <CloudFile v-bind:file="node"></CloudFile>
-//    </span>
-//    <span v-else>
-//      <div>{{ node.name }}</div>
-//    </span>
-//   
-//    <ul v-if="node.children && showChildren">
-//      <TreeNode v-for="child in children" v-bind:node="child" :key="child.vue_id">
-//      </TreeNode>
-//    </ul>
-//  </li>
-// </template>
 
   return(
     <li>
