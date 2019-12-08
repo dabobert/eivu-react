@@ -1,17 +1,28 @@
-import React from 'react';
+import React, { createContext, useState} from 'react';
 import logo from './logo.svg';
-import CloudFile from './CloudFile';
 import TreeRoot from './TreeRoot';
 import './App.css';
-import './tree.css';
 import API from './API';
 
+
+const QueueContext = createContext()
+
 function App() {
+  const [ queue, setQueue ] = useState(['ballrom'])
+  
+  // const queueSettings = {
+  //   queue,
+  //   setQueue
+  // }
+
   return (
-    <ul>
-      <TreeRoot />
-    </ul>
+    <QueueContext.Provider value={[queue, setQueue]}>
+      <ul>
+        <TreeRoot />
+      </ul>
+    </QueueContext.Provider>
   );
 }
 
 export default App;
+export { QueueContext };
