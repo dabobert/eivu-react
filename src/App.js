@@ -10,11 +10,6 @@ const QueueContext = createContext()
 function App() {
   const [ queue, setQueue ] = useState(['ballrom'])
   
-  // const queueSettings = {
-  //   queue,
-  //   setQueue
-  // }
-
   return (
     <QueueContext.Provider value={[queue, setQueue]}>
       <ul>
