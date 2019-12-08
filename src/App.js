@@ -1,7 +1,7 @@
 import React, { createContext, useState} from 'react';
 import logo from './logo.svg';
 import TreeRoot from './TreeRoot';
-import './App.css';
+import './App.scss';
 import API from './API';
 
 
@@ -15,6 +15,10 @@ function App() {
       <ul>
         <TreeRoot />
       </ul>
+      <div id="plyr_wrapper" className="audio"> 
+        <div id="plyr_buffer"></div>
+        <div id="plyr_container"></div>
+      </div>
     </QueueContext.Provider>
   );
 }

@@ -7,33 +7,6 @@
   user-select: none;
 }
 
-#plyr_wrapper.audio {
-
-  #plyr_buffer {
-    height: 61px;
-    /*
-       Border 1px
-       Audio plyr height 50px
-       browser status bar height 10px
-    */
-  }
-  #plyr_container {
-    border-bottom: 1px solid black;
-    background: gray;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 60px;
-
-
-    .plyr--audio {
-      border-top: 1px solid black;
-    }
-  }    
-}
-
-
 div.folder {
   display: inline-block;
   border-bottom: 1px solid black;
