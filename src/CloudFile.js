@@ -4,8 +4,14 @@ import './tree.css';
 
 function CloudFile(props) {
 
-const [queue, setQueue] = useContext(QueueContext);
+  const [queue, setQueue] = useContext(QueueContext);
   const file = props.node
+
+
+  function handleClickPlay() {
+    setQueue(file.url)
+  }
+
   return(
     <div>
       <div>queue: {queue}</div>
@@ -13,7 +19,7 @@ const [queue, setQueue] = useContext(QueueContext);
         <div className="col-xs-1">{ file.release_pos && file.release_pos.toString().padStart(2,0) }</div>
         <div className="col-xs-4">{ file.name }</div>
         <div className="col-xs-7">
-          <a href="javascript:void(0)">
+          <a href="javascript:void(0)" onClick={handleClickPlay}>
             <i className="fas fa-play"></i>
           </a>
 {/*          <span v-if="isPlaying">
@@ -25,11 +31,13 @@ const [queue, setQueue] = useContext(QueueContext);
             <a href="javascript:void(0)">
               <i className="fas fa-play" @click="play"></i>
             </a>
-          </span>
-          <i className="fas fa-plus"></i>
-          <a v-bind:href="file.url" target="_blank">
+          </span>*/}
+          <a href="javascript:void(0)">
+            <i className="fas fa-plus"></i>
+          </a>
+          <a href={file.url} target="_blank">
             <i className="fas fa-external-link-alt"></i>
-          </a>*/}
+          </a>
         </div>
       </div>
     </div>
