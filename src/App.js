@@ -55,7 +55,7 @@ function App() {
       <div id="plyr_wrapper" className="audio"> 
         <div id="plyr_buffer"></div>
         <div id="plyr_container">
-          <PlyrComponent />
+          <PlyrComponent options={{autoplay: true}} source={source} />
         </div>
       </div>
     </QueueContext.Provider>

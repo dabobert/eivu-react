@@ -1,28 +1,11 @@
 import React, { useEffect } from 'react';
 import Plyr from 'plyr';
-// import 'plyr/dist/plyr.css'
 
 function PlyrComponent(props) {
 
   useEffect(() => {
-    const player = new Plyr('.js-plyr', props.options)
-    player.source = {
-    type: 'audio',
-    title: 'Example title',
-    sources: [
-      {
-        src: 'http://eivutest.s3.amazonaws.com/audio/1B/3E/DA/C0/02/10/42/FE/9F/C2/90/58/D6/D9/7C/BB/14_-_Something_About_Us__Love_Theme_From_Interstella_5555_.mp3',
-        type: 'audio/mp3',
-        size: 720,
-      },
-      {
-        src: 'http://eivutest.s3.amazonaws.com/audio/FD/DA/6E/1C/40/50/19/D7/69/1F/94/92/4D/E0/E2/12/01_-_Born_To_Die.mp3',
-        type: 'audio/mp3',
-        size: 1080,
-      },
-    ]
-  }
-
+    const player = new Plyr('.bar', props.options)
+    player.source = props.source
 
   },[])
   // componentDidMount() {
@@ -32,7 +15,7 @@ function PlyrComponent(props) {
 
 
   return (
-    <audio className='js-plyr plyr'>
+    <audio className='bar'>
     </audio>
   )
   

@@ -8,8 +8,9 @@ function CloudFile(props) {
   const file = props.node
 
 
-  function handleClickPlay() {
-    setQueue(file.url)
+  function handleClickPlay(event) {
+    setQueue(file.url);
+    event.preventDefault();
   }
 
   return(
@@ -19,20 +20,20 @@ function CloudFile(props) {
         <div className="col-xs-1">{ file.release_pos && file.release_pos.toString().padStart(2,0) }</div>
         <div className="col-xs-4">{ file.name }</div>
         <div className="col-xs-7">
-          <a href="javascript:void(0)" onClick={handleClickPlay}>
+          <a onClick={handleClickPlay}>
             <i className="fas fa-play"></i>
           </a>
 {/*          <span v-if="isPlaying">
-            <a href="javascript:void(0)">
+            <a>
               <i className="fas fa-pause" @click="play"></i>
             </a>
           </span>
           <span v-else>
-            <a href="javascript:void(0)">
+            <a>
               <i className="fas fa-play" @click="play"></i>
             </a>
           </span>*/}
-          <a href="javascript:void(0)">
+          <a>
             <i className="fas fa-plus"></i>
           </a>
           <a href={file.url} target="_blank">
