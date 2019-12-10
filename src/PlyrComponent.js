@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import Plyr from 'plyr';
+import 'plyr/dist/plyr.css'
 
 function PlyrComponent(props) {
-
   useEffect(() => {
     const player = new Plyr('.bar', props.options)
     player.source = props.source
