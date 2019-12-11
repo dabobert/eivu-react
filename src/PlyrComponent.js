@@ -1,92 +1,93 @@
 import React, { useEffect } from 'react';
 import Plyr from 'plyr';
-import 'plyr/dist/plyr.css'
+import 'plyr/dist/plyr.css';
+import PropTypes from "prop-types"
 
 function PlyrComponent(props) {
   useEffect(() => {
-    const player = new Plyr('.bar', props.options)
+    const player = new Plyr('.player', props.options)
     player.source = props.source
 
-  },[])
-  // componentDidMount() {
-  //   this.player = new Plyr('.js-plyr', this.props.options)
-    
-  // }
+    player.on('ended', () => {
+console.log('now it is ' + Date.now())
+      // var nextTrackObject = this.$store.getters.nextAutoTrackObject;
+      // // when currentTrackObject is the same as nextTrackObject clear it out
+      // if (!nextTrackObject)
+      //   this.$store.commit("clearCurrentTrackObject");
+      // else // otherwise play the next found track
+      //   nextTrackObject && this.$store.commit("playCloudFile", nextTrackObject)
+    })
 
+
+
+  },[])
 
   return (
-    <audio className='bar'>
+    <audio className='player'>
     </audio>
   )
   
 }
 
-// PlyrComponent.defaultProps = {
-//   options: {
-//     controls: [
-//       'rewind',
-//       'play',
-//       'fast-forward',
-//       'progress',
-//       'current-time',
-//       'duration',
-//       'mute',
-//       'volume',
-//       'settings',
-//       'fullscreen',
-//     ],
-//     i18n: {
-//       restart: 'Restart',
-//       rewind: 'Rewind {seektime}s',
-//       play: 'Play',
-//       pause: 'Pause',
-//       fastForward: 'Forward {seektime}s',
-//       seek: 'Seek',
-//       seekLabel: '{currentTime} of {duration}',
-//       played: 'Played',
-//       buffered: 'Buffered',
-//       currentTime: 'Current time',
-//       duration: 'Duration',
-//       volume: 'Volume',
-//       mute: 'Mute',
-//       unmute: 'Unmute',
-//       enableCaptions: 'Enable captions',
-//       disableCaptions: 'Disable captions',
-//       download: 'Download',
-//       enterFullscreen: 'Enter fullscreen',
-//       exitFullscreen: 'Exit fullscreen',
-//       frameTitle: 'Player for {title}',
-//       captions: 'Captions',
-//       settings: 'Settings',
-//       menuBack: 'Go back to previous menu',
-//       speed: 'Speed',
-//       normal: 'Normal',
-//       quality: 'Quality',
-//       loop: 'Loop',
-//     },
-//   },
-//   sources: {
-//     type: 'video',
-//     sources: [
-//       {
-//         src: '/path/to/movie.mp4',
-//         type: 'video/mp4',
-//         size: 720,
-//       },
-//       {
-//         src: '/path/to/movie.webm',
-//         type: 'video/webm',
-//         size: 1080,
-//       },
-//     ],
-//   }
-// }
 
-// PlyrComponent.propTypes = {
-//   options: PropTypes.object,
-//   sources: PropTypes.object,
-//   source: PropTypes.func,
-//   destroy: PropTypes.func
-// }
+
+      // this.player.on('play', () => this.$store.commit("setPlayState", true));
+      // this.player.on('pause', () => this.$store.commit("setPlayState", false));
+      // this.player.on('ended', () => {
+      //   var nextTrackObject = this.$store.getters.nextAutoTrackObject;
+      //   // when currentTrackObject is the same as nextTrackObject clear it out
+      //   if (!nextTrackObject)
+      //     this.$store.commit("clearCurrentTrackObject");
+      //   else // otherwise play the next found track
+      //     nextTrackObject && this.$store.commit("playCloudFile", nextTrackObject)
+      // })
+      // this.$store.commit("setPlyr", this.$refs.plyr);
+
+
+
+PlyrComponent.defaultProps = {
+  options: {
+    autoplay: true,
+    controls: [
+      'rewind',
+      'play',
+      'fast-forward',
+      'progress',
+      'current-time',
+      'duration',
+      'mute',
+      'volume',
+      'settings',
+      'fullscreen',
+    ],
+  },
+  source: {
+    type: 'audio',
+    title: 'Example title',
+    sources: [
+      {
+        src: 'http://eivu.s3.amazonaws.com/welcome.mp3',
+        type: 'audio/mp3',
+        // size: 720,
+      },
+      {
+        src: 'http://eivutest.s3.amazonaws.com/audio/FD/DA/6E/1C/40/50/19/D7/69/1F/94/92/4D/E0/E2/12/01_-_Born_To_Die.mp3',
+        type: 'audio/mp3',
+        // size: 1080,
+      },
+    ]
+  }
+
+
+}
+
+
+
+PlyrComponent.propTypes = {
+  options: PropTypes.object,
+  sources: PropTypes.object,
+  // source: PropTypes.func,
+  // destroy: PropTypes.func
+}
 
 export default PlyrComponent

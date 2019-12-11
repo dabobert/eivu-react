@@ -8,14 +8,32 @@ function CloudFile(props) {
   const file = props.node
 
 
+  function currentFile() {
+    return {
+      src: file.url,
+      type: file.content_type
+    }
+  }
+
   function handleClickPlay(event) {
-    setQueue(file.url);
+    setQueue([
+      currentFile()
+    ]);
+    event.preventDefault();
+  }
+
+  function handleClickAdd(event) {
+    setQueue((prevQueue) =>
+      [
+        ...prevQueue,
+        currentFile()
+      ]
+    );
     event.preventDefault();
   }
 
   return(
     <div>
-      <div>queue: {queue}</div>
       <div className="row">
         <div className="col-xs-1">{ file.release_pos && file.release_pos.toString().padStart(2,0) }</div>
         <div className="col-xs-4">{ file.name }</div>
@@ -33,7 +51,7 @@ function CloudFile(props) {
               <i className="fas fa-play" @click="play"></i>
             </a>
           </span>*/}
-          <a>
+          <a onClick={handleClickAdd}>
             <i className="fas fa-plus"></i>
           </a>
           <a href={file.url} target="_blank">
