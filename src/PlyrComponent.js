@@ -1,15 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext,useState } from 'react';
 import Plyr from 'plyr';
+import { QueueContext } from './App'
 import 'plyr/dist/plyr.css';
 import PropTypes from "prop-types"
 
 function PlyrComponent(props) {
+  const [ queueIndex, setQueueIndex ] = useState(0)
+  const [ queue, setQueue ] = useContext(QueueContext);
+
   useEffect(() => {
     const player = new Plyr('.player', props.options)
     player.source = props.source
 
     player.on('ended', () => {
-console.log('now it is ' + Date.now())
+
+      setQueueIndex(prevIndex => prevIndex + 1)
+      player.source = queue[queueIndex]
+      console.log("index is " + queueIndex)
+
+      // if (queue[queueIndex])
+      //   player.play();
+      // else
+      //   setQueueIndex(prevIndex => prevIndex + 1);
+
       // var nextTrackObject = this.$store.getters.nextAutoTrackObject;
       // // when currentTrackObject is the same as nextTrackObject clear it out
       // if (!nextTrackObject)

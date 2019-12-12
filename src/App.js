@@ -8,10 +8,27 @@ import PlyrComponent from './PlyrComponent'
 const QueueContext = createContext()
 
 function App() {
-  const [ queue, setQueue ] = useState(['ballrom'])
+  const [ queue, setQueue ] = useState(
+[
+      {
+        src: 'http://eivu.s3.amazonaws.com/welcome.mp3',
+        type: 'audio/mp3',
+        // size: 720,
+      },
+      {
+        src: 'http://eivutest.s3.amazonaws.com/audio/FD/DA/6E/1C/40/50/19/D7/69/1F/94/92/4D/E0/E2/12/01_-_Born_To_Die.mp3',
+        type: 'audio/mp3',
+        // size: 1080,
+      },
+    ]
+
+
+    )
+
 
   return (
     <QueueContext.Provider value={[queue, setQueue]}>
+      <div>{JSON.stringify(queue) }</div>
       <ul>
         <TreeRoot />
       </ul>
