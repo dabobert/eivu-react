@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import CloudFile from './CloudFile';
 import API from './API'
-import './tree.css';
+import './tree.scss';
 
 function TreeNode(props) {
   const node = props.node;
