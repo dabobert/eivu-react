@@ -1,0 +1,29 @@
+audio {
+  width: 100%;
+}
+
+#plyr_wrapper.audio {
+
+  #plyr_buffer {
+    height: 60px;
+    /*
+       Border 1px
+       Audio plyr height 50px
+       browser status bar height 10px
+    */
+  }
+  #plyr_container {
+    // border-bottom: 1px solid black;
+    background: white;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 60px;
+
+
+    .plyr--audio {
+      border-top: 1px solid black;
+    }
+  }    
+}

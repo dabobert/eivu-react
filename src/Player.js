@@ -1,42 +1,40 @@
 import React, { useEffect, useContext,useState } from 'react';
-import Plyr from 'plyr';
+// import Plyr from 'plyr'; 
 import { QueueContext } from './App'
-import 'plyr/dist/plyr.css';
+// import 'plyr/dist/plyr.css';
+import './Player.scss';
 import PropTypes from "prop-types"
 
-function PlyrComponent(props) {
+function Player(props) {
   const [ queueIndex, setQueueIndex ] = useState(0)
   const [ queue, setQueue ] = useContext(QueueContext);
 
-  useEffect(() => {
-    const player = new Plyr('.player', props.options)
-    player.source = props.source
+  // useEffect(() => {
+  //   alert(currentTrackSource())
+  // },[])
 
-    player.on('ended', () => {
-
-      setQueueIndex(prevIndex => prevIndex + 1)
-      player.source = queue[queueIndex]
-      console.log("index is " + queueIndex)
-
-      // if (queue[queueIndex])
-      //   player.play();
-      // else
-      //   setQueueIndex(prevIndex => prevIndex + 1);
-
-      // var nextTrackObject = this.$store.getters.nextAutoTrackObject;
-      // // when currentTrackObject is the same as nextTrackObject clear it out
-      // if (!nextTrackObject)
-      //   this.$store.commit("clearCurrentTrackObject");
-      // else // otherwise play the next found track
-      //   nextTrackObject && this.$store.commit("playCloudFile", nextTrackObject)
+  function handleEnd(event) {
+    setQueueIndex((prevQueueIndex) => {
+      if(prevQueueIndex == queue.length - 1)
+        return 0
+      else
+        return prevQueueIndex + 1
     })
 
+    if(queueIndex > 0)
+      event.target.play()
+  }
 
-
-  },[])
+  function currentTrackSource() {
+    if(queue[queueIndex])
+      return queue[queueIndex]['src'];
+    else
+      return "http://eivu.s3.amazonaws.com/welcome.mp3"
+  }
 
   return (
-    <audio className='player'>
+    <audio id='player' onEnded={handleEnd} controls>
+      <source src={'http://eivu.s3.amazonaws.com/welcome.mp3'} type="audio/mpeg" />
     </audio>
   )
   
@@ -57,7 +55,7 @@ function PlyrComponent(props) {
       // this.$store.commit("setPlyr", this.$refs.plyr);
 
 
-
+{/*
 PlyrComponent.defaultProps = {
   options: {
     autoplay: true,
@@ -102,5 +100,5 @@ PlyrComponent.propTypes = {
   // source: PropTypes.func,
   // destroy: PropTypes.func
 }
-
-export default PlyrComponent
+*/}
+export default Player;
