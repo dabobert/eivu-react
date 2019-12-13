@@ -3,11 +3,13 @@ import React, { useEffect, useContext,useState } from 'react';
 import { QueueContext } from './App'
 // import 'plyr/dist/plyr.css';
 import './Player.scss';
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
+
 
 function Player(props) {
   const [ queueIndex, setQueueIndex ] = useState(0)
   const [ queue, setQueue ] = useContext(QueueContext);
+  const [ trackSource, setTrackSource ] = useState(queue[queueIndex].src)
 
   // useEffect(() => {
   //   alert(currentTrackSource())
@@ -21,20 +23,32 @@ function Player(props) {
         return prevQueueIndex + 1
     })
 
+
+
+
+    setTrackSource(queue[queueIndex].src);
+    event.target.load();
+
     if(queueIndex > 0)
-      event.target.play()
+      event.target.play();
+
+
+console.log("index: " + queueIndex)
+console.log("queue: " + queue)
+console.log("trackSource: " + trackSource)
+
   }
 
   function currentTrackSource() {
     if(queue[queueIndex])
-      return queue[queueIndex]['src'];
+      return queue[queueIndex].src;
     else
       return "http://eivu.s3.amazonaws.com/welcome.mp3"
   }
 
   return (
-    <audio id='player' onEnded={handleEnd} controls>
-      <source src={'http://eivu.s3.amazonaws.com/welcome.mp3'} type="audio/mpeg" />
+    <audio id='player' onEnded={handleEnd} controls preload="auto">
+      <source src={trackSource} type="audio/mpeg" />
     </audio>
   )
   
