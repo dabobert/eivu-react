@@ -1,18 +1,11 @@
 import React from 'react';
 
-function Sidebar() {
+function Sidebar(props) {
+  const itemComponents = props.items.map(label => <li><a className={props.itemAnchorClassName}>{label}</a></li>)
   return(
     <div id="sidebar">
       <ul class="nav list-group">
-        <li>
-          <a class="list-group-item" href="#"><i class="icon-home icon-1x"></i>Sidebar Item 1</a>
-        </li>
-        <li>
-          <a class="list-group-item" href="#"><i class="icon-home icon-1x"></i>Sidebar Item 2</a>
-        </li>
-        <li>
-          <a class="list-group-item" href="#"><i class="icon-home icon-1x"></i>Sidebar Item 3</a>
-        </li>
+        {itemComponents}
       </ul>
     </div>
   )

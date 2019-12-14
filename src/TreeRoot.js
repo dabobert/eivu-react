@@ -12,9 +12,9 @@ function TreeRoot() {
   }, [])
 
   return (
-    <React.Fragment>
+    <ul>
       { treeNodeComponents }
-    </React.Fragment>
+    </ul>
   );
 }
 

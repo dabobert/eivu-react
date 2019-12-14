@@ -28,39 +28,24 @@ function App() {
   return (
     <QueueContext.Provider value={[queue, setQueue]}>
       <Header />
-
-
-
-
-
-<div id="wrapper">
-  <div id="sidebar-wrapper" class="col-md-1">
-    <Sidebar />
-  </div>
-  <div id="main-wrapper" class="col-md-11 pull-right">
-    <div id="main">
-      <h1>Pages#welcome</h1>
-      <div id="app4">
-
-
-      <div>{JSON.stringify(queue) }</div>
-      <ul>
-        <TreeRoot />
-      </ul>
-      <div id="plyr_wrapper" className="audio"> 
-        <div id="plyr_buffer"></div>
-        <div id="plyr_container">
-          <Player />
+      <div id="wrapper">
+        <div id="sidebar-wrapper" class="col-md-1">
+          <Sidebar itemAnchorClassName={'list-group-item'} items={['Now Playing', 'Library','Queue']} />
+        </div>
+        <div id="main-wrapper" class="col-md-11 pull-right">
+          <div id="main">
+            <h1>Pages#welcome</h1>
+            <div>{JSON.stringify(queue) }</div>
+            <TreeRoot />
+            <div id="plyr_wrapper" className="audio"> 
+              <div id="plyr_buffer"></div>
+              <div id="plyr_container">
+                <Player />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
     </QueueContext.Provider>
   );
 }

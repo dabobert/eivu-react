@@ -32,6 +32,18 @@ body {
     position: relative;
     height: 100%;
     overflow-y: auto;
+
+    ul.nav {
+      background-color: #f8f8f8;
+
+      li {
+        padding-right: 0px;
+        a {
+          cursor: pointer;
+        }
+      }
+    }
+
 }
 #sidebar .list-group-item {
         border-radius: 0;
