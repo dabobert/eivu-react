@@ -3,16 +3,16 @@ import { ActiveTabContext } from './App';
 
 function Sidebar(props) {
   const [ activeTab, setActiveTab ] = useContext(ActiveTabContext);
-  const itemComponents = props.items.map(label => <li><a onClick={handleAnchorClick} data-label={label} className={props.itemAnchorClassName}>{label}</a></li>)
+  const itemComponents = props.items.map(label => <li key={label}><a onClick={handleAnchorClick} data-label={label} className={props.itemAnchorClassName}>{label}</a></li>)
 
   function handleAnchorClick(event) {
     event.preventDefault();
-    setActiveTab(event.target.dataset.label)
+    setActiveTab(event.target.dataset.label);
   }
 
   return(
     <div id="sidebar">
-      <ul class="nav list-group">
+      <ul className="nav list-group">
         {itemComponents}
       </ul>
     </div>

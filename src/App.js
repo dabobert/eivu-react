@@ -14,24 +14,23 @@ const ActiveTabContext = createContext();
 function App(props) {
 
   const [ queue, setQueue ] = useState(props.queue);
-  const [ activeTab, setActiveTab ] = useState(props.leftNavItems[0]);
+  const [ activeTab, setActiveTab ] = useState(props.leftNavItems[1]);
 
   return (
     <QueueContext.Provider value={[queue, setQueue]}>
       <Header />
       <div id="wrapper">
         <ActiveTabContext.Provider value={[activeTab, setActiveTab]}>    
-          <div id="sidebar-wrapper" class="col-md-1">
+          <div id="sidebar-wrapper" className="col-md-1">
             <Sidebar itemAnchorClassName={'list-group-item'} items={props.leftNavItems} />
           </div>
         </ActiveTabContext.Provider>
-        <div id="main-wrapper" class="col-md-11 pull-right">
+        <div id="main-wrapper" className="col-md-11 pull-right">
           <div id="main">
-            <h1>Pages#welcome</h1>
-            
-            { activeTab === 'Now Playing' && <h1>Now Playing</h1> }
+            <h1>{activeTab}</h1>
+            { activeTab === 'Now Playing' && <h1>info</h1> }
             { activeTab === 'Library' && <TreeRoot /> }
-            { activeTab === 'Queue' && <div><h1>Queue:</h1>{JSON.stringify(queue) }</div>}
+            { activeTab === 'Queue' && <div><h1>info</h1>{JSON.stringify(queue) }</div>}
             <div id="plyr_wrapper" className="audio"> 
               <div id="plyr_buffer"></div>
               <div id="plyr_container">
