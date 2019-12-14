@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect} from 'react';
 import logo from './logo.svg';
-import TreeRoot from './TreeRoot';
+import TreeNode from './TreeNode';
 import './App.scss';
 import API from './API';
 import Player from './Player';
@@ -15,6 +15,22 @@ function App(props) {
 
   const [ queue, setQueue ] = useState(props.queue);
   const [ activeTab, setActiveTab ] = useState(props.leftNavItems[1]);
+  const [ treeNodeComponents, setTreeNodeComponents] = useState(<li>Loading....</li>);
+
+  async function fetchData() {
+    const treeRoot = await API.get('folders'); //https://designrevision.com/react-axios/
+    const treeNodeComponents = treeRoot.data.data.map( node => <TreeNode key={node.vue_id} node={node} />)
+    setTreeNodeComponents(treeNodeComponents);
+  }
+
+  useEffect(() => {
+
+    fetchData();
+  }, [])
+
+
+
+
 
   return (
     <QueueContext.Provider value={[queue, setQueue]}>
@@ -29,7 +45,7 @@ function App(props) {
           <div id="main">
             <h1>{activeTab}</h1>
             { activeTab === 'Now Playing' && <h1>info</h1> }
-            { activeTab === 'Library' && <TreeRoot /> }
+            { activeTab === 'Library' && <ul>{ treeNodeComponents }</ul> }
             { activeTab === 'Queue' && <div><h1>info</h1>{JSON.stringify(queue) }</div>}
             <div id="plyr_wrapper" className="audio"> 
               <div id="plyr_buffer"></div>
