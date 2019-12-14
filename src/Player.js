@@ -70,43 +70,6 @@ console.log("trackSource: " + trackSource)
 
 
 {/*
-PlyrComponent.defaultProps = {
-  options: {
-    autoplay: true,
-    controls: [
-      'rewind',
-      'play',
-      'fast-forward',
-      'progress',
-      'current-time',
-      'duration',
-      'mute',
-      'volume',
-      'settings',
-      'fullscreen',
-    ],
-  },
-  source: {
-    type: 'audio',
-    title: 'Example title',
-    sources: [
-      {
-        src: 'http://eivu.s3.amazonaws.com/welcome.mp3',
-        type: 'audio/mp3',
-        // size: 720,
-      },
-      {
-        src: 'http://eivutest.s3.amazonaws.com/audio/FD/DA/6E/1C/40/50/19/D7/69/1F/94/92/4D/E0/E2/12/01_-_Born_To_Die.mp3',
-        type: 'audio/mp3',
-        // size: 1080,
-      },
-    ]
-  }
-
-
-}
-
-
 
 PlyrComponent.propTypes = {
   options: PropTypes.object,

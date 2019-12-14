@@ -8,24 +8,30 @@ import Sidebar from './Sidebar';
 import Header from './Header';
 import PropTypes from "prop-types";
 
-const QueueContext = createContext()
+const QueueContext = createContext();
+const ActiveTabContext = createContext();
 
 function App(props) {
 
   const [ queue, setQueue ] = useState(props.queue);
+  const [ activeTab, setActiveTab ] = useState(props.leftNavItems[0]);
 
   return (
     <QueueContext.Provider value={[queue, setQueue]}>
       <Header />
       <div id="wrapper">
-        <div id="sidebar-wrapper" class="col-md-1">
-          <Sidebar itemAnchorClassName={'list-group-item'} items={['Now Playing', 'Library','Queue']} />
-        </div>
+        <ActiveTabContext.Provider value={[activeTab, setActiveTab]}>    
+          <div id="sidebar-wrapper" class="col-md-1">
+            <Sidebar itemAnchorClassName={'list-group-item'} items={props.leftNavItems} />
+          </div>
+        </ActiveTabContext.Provider>
         <div id="main-wrapper" class="col-md-11 pull-right">
           <div id="main">
             <h1>Pages#welcome</h1>
-            <div>{JSON.stringify(queue) }</div>
-            <TreeRoot />
+            
+            { activeTab === 'Now Playing' && <h1>Now Playing</h1> }
+            { activeTab === 'Library' && <TreeRoot /> }
+            { activeTab === 'Queue' && <div><h1>Queue:</h1>{JSON.stringify(queue) }</div>}
             <div id="plyr_wrapper" className="audio"> 
               <div id="plyr_buffer"></div>
               <div id="plyr_container">
@@ -41,6 +47,7 @@ function App(props) {
 
 
 App.defaultProps = {
+  leftNavItems: ['Now Playing', 'Library', 'Queue'],
   queue: [
     {
       src: 'http://eivu.s3.amazonaws.com/welcome.mp3',
@@ -56,4 +63,4 @@ App.defaultProps = {
 }
 
 export default App;
-export { QueueContext };
+export { QueueContext, ActiveTabContext };
