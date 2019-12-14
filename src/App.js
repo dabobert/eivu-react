@@ -6,24 +6,13 @@ import API from './API';
 import Player from './Player';
 import Sidebar from './Sidebar';
 import Header from './Header';
+import PropTypes from "prop-types";
 
 const QueueContext = createContext()
 
-function App() {
-  const [ queue, setQueue ] = useState(
-    [
-      {
-        src: 'http://eivu.s3.amazonaws.com/welcome.mp3',
-        type: 'audio/mp3',
-        // size: 720,
-      },
-      {
-        src: 'http://eivutest.s3.amazonaws.com/audio/FD/DA/6E/1C/40/50/19/D7/69/1F/94/92/4D/E0/E2/12/01_-_Born_To_Die.mp3',
-        type: 'audio/mp3',
-        // size: 1080,
-      },
-    ])
+function App(props) {
 
+  const [ queue, setQueue ] = useState(props.queue);
 
   return (
     <QueueContext.Provider value={[queue, setQueue]}>
@@ -51,7 +40,20 @@ function App() {
 }
 
 
-
+App.defaultProps = {
+  queue: [
+    {
+      src: 'http://eivu.s3.amazonaws.com/welcome.mp3',
+      type: 'audio/mp3',
+      // size: 720,
+    },
+    {
+      src: 'http://eivutest.s3.amazonaws.com/audio/FD/DA/6E/1C/40/50/19/D7/69/1F/94/92/4D/E0/E2/12/01_-_Born_To_Die.mp3',
+      type: 'audio/mp3',
+      // size: 1080,
+    },
+  ]
+}
 
 export default App;
 export { QueueContext };
