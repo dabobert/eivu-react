@@ -11,19 +11,14 @@ function Player(props) {
   const [ queue, setQueue ] = useContext(QueueContext);
   const [ trackSource, setTrackSource ] = useState(queue[queueIndex].src)
 
-  // useEffect(() => {
-  //   alert(currentTrackSource())
-  // },[])
-
   function handleEnd(event) {
+    //update numPlays for track
     setQueueIndex((prevQueueIndex) => {
       if(prevQueueIndex == queue.length - 1)
         return 0
       else
         return prevQueueIndex + 1
     })
-
-
 
 
     setTrackSource(queue[queueIndex].src);

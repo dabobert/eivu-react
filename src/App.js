@@ -24,13 +24,8 @@ function App(props) {
   }
 
   useEffect(() => {
-
     fetchData();
   }, [])
-
-
-
-
 
   return (
     <QueueContext.Provider value={[queue, setQueue]}>
