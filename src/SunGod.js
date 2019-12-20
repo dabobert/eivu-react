@@ -4,27 +4,6 @@ import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
 
-
-
-// //---------
-// import { ApolloClient } from 'apollo-client';
-// import { InMemoryCache } from 'apollo-cache-inmemory';
-// import { HttpLink } from 'apollo-link-http';
-
-
-// const cache = new InMemoryCache();
-// const link = new HttpLink({
-//   uri: 'http://localhost:3000/'
-// });
-
-// const client = new ApolloClient({
-//   cache,
-//   link
-// });
-
-
-// //---------
-
 const ROOT = gql`
   query root {
     root {
