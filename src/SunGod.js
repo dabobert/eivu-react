@@ -6,24 +6,24 @@ import gql from 'graphql-tag';
 
 
 
-//---------
-import { ApolloClient } from 'apollo-client';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { HttpLink } from 'apollo-link-http';
+// //---------
+// import { ApolloClient } from 'apollo-client';
+// import { InMemoryCache } from 'apollo-cache-inmemory';
+// import { HttpLink } from 'apollo-link-http';
 
 
-const cache = new InMemoryCache();
-const link = new HttpLink({
-  uri: 'http://localhost:3000/'
-});
+// const cache = new InMemoryCache();
+// const link = new HttpLink({
+//   uri: 'http://localhost:3000/'
+// });
 
-const client = new ApolloClient({
-  cache,
-  link
-});
+// const client = new ApolloClient({
+//   cache,
+//   link
+// });
 
 
-//---------
+// //---------
 
 const ROOT = gql`
   query root {
@@ -41,7 +41,7 @@ export default function Launcher() {
   if (error) return <p>ERROR</p>;
 
   return (
-     <ApolloProvider client={client}>
+
     <ul>
       {data.root &&
         data.root.map(launch => (
@@ -51,6 +51,6 @@ export default function Launcher() {
           </li>
         ))}
     </ul>
-    </ApolloProvider>
+
   );
 }
