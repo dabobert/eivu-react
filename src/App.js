@@ -7,6 +7,7 @@ import Player from './Player';
 import Sidebar from './Sidebar';
 import Header from './Header';
 import PropTypes from "prop-types";
+import Launcher from './SunGod'
 
 const QueueContext = createContext();
 const ActiveTabContext = createContext();
@@ -39,6 +40,7 @@ function App(props) {
         <div id="main-wrapper" className="col-md-11 pull-right">
           <div id="main">
             <h1>{activeTab}</h1>
+            <Launcher />
             { activeTab === 'Now Playing' && <h1>info</h1> }
             { activeTab === 'Library' && <ul>{ treeNodeComponents }</ul> }
             { activeTab === 'Queue' && <div><h1>info</h1>{JSON.stringify(queue) }</div>}
