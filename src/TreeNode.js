@@ -8,7 +8,7 @@ import './tree.css';
 function TreeNode(props) {
   const node = props.node;
   const client = useApolloClient();
-  const { name, entryType } = node
+  const { name, entryType, klass } = node
   const [ childrenNotLoaded, setChildrenNotLoaded ] = useState(true);
   const [ childrenVisible, setChildrenVisible ] = useState(false);
   const [ childComponents, setChildComponents ] = useState(<li>Loading...</li>);
@@ -31,7 +31,6 @@ function TreeNode(props) {
         setChildComponents(childComponents);
         setChildrenNotLoaded(false);
       }
-      // const childComponents = data.data.children.map(node => <TreeNode key={node.domUuid} node={node} />);
     }
   }
 
@@ -54,9 +53,9 @@ function TreeNode(props) {
 
   return(
     <li>
-      { node.entryType === 'grouping' && <div className={node.klass} onClick={() => { toggleChildren(); loadChildren()}}>{node.name}</div> }
-      { node.entryType === 'file' && <CloudFile node={node} /> }
-      <ul style={ styles() }> { node.entryType === 'grouping' && childComponents }</ul>
+      { entryType === 'grouping' && <div className={klass} onClick={() => { toggleChildren(); loadChildren()}}>{name}</div> }
+      { entryType === 'file' && <CloudFile node={node} /> }
+      <ul style={ styles() }> { entryType === 'grouping' && childComponents }</ul>
     </li>
   )
 

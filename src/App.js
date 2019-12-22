@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect} from 'react';
-import logo from './logo.svg';
 import TreeRoot from './TreeRoot';
 import './App.scss';
 import Player from './Player';
