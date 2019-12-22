@@ -9,10 +9,7 @@ function CloudFile(props) {
 
 
   function currentFile() {
-    return {
-      src: file.url,
-      type: file.contentType
-    }
+    return props.node
   }
 
   function handleClickPlay(event) {

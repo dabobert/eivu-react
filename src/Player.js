@@ -21,7 +21,7 @@ function Player(props) {
     })
 
 
-    setTrackSource(queue[queueIndex].src);
+    // setTrackSource(queue[queueIndex].src);
     event.target.load();
 
     if(queueIndex > 0)
@@ -30,7 +30,7 @@ function Player(props) {
 
 console.log("index: " + queueIndex)
 console.log("queue: " + queue)
-console.log("trackSource: " + trackSource)
+// console.log("trackSource: " + trackSource)
 
   }
 
@@ -43,7 +43,7 @@ console.log("trackSource: " + trackSource)
 
   return (
     <audio id='player' onEnded={handleEnd} controls preload="auto">
-      <source src={trackSource} type="audio/mpeg" />
+      <source src={queue[queueIndex].src} type="audio/mpeg" />
     </audio>
   )
   
