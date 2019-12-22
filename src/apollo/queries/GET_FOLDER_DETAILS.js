@@ -12,7 +12,6 @@ const GET_FOLDER_DETAILS = gql`
         domUuid
       }
       ... on CloudFile {
-        __typename
         id
         name
         klass
@@ -22,6 +21,7 @@ const GET_FOLDER_DETAILS = gql`
         url
         infoUrl
         contentType
+        releasePos
         year
         release {
           id

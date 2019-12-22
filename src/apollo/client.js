@@ -1,8 +1,5 @@
 import { ApolloClient } from 'apollo-client';
-import { ApolloProvider } from '@apollo/react-hooks';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
-// import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
+import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import introspectionQueryResultData from './fragmentTypes.json';
 

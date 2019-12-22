@@ -11,7 +11,7 @@ function CloudFile(props) {
   function currentFile() {
     return {
       src: file.url,
-      type: file.content_type
+      type: file.contentType
     }
   }
 
