@@ -14,6 +14,42 @@ const ROOT = gql`
   }
 `;
 
+const GET_FOLDER_DETAILS = gql`
+  query GetFolderContents($id: ID) {
+    getFolderFromId(id: $id) {
+      ... on Folder {
+        __typename
+        id
+        name
+        klass
+        entryType
+        domUuid
+      }
+      ... on CloudFile {
+        __typename
+        id
+        name
+        klass
+        entryType
+        domUuid
+        asset
+        url
+        infoUrl
+        contentType
+        year
+        release {
+          id
+          name
+        }
+        artists {
+          name
+          klass
+        }
+      }
+    }
+  }
+`;
+
 export default function Launcher() {
   const { data, loading, error } = useQuery(ROOT);
   if (loading) return <h3>loading</h3>;
