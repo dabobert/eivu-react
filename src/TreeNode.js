@@ -12,7 +12,6 @@ function TreeNode(props) {
   const [ childrenNotLoaded, setChildrenNotLoaded ] = useState(true);
   const [ childrenVisible, setChildrenVisible ] = useState(false);
   const [ childComponents, setChildComponents ] = useState(<li>Loading...</li>);
-  // const { data, loading, error } = useQuery(GET_FOLDER_DETAILS);
 
   function toggleChildren() {
     setChildrenVisible( prevVisibility => !prevVisibility)
@@ -33,9 +32,6 @@ function TreeNode(props) {
       }
     }
   }
-
-
-
 
 
 
