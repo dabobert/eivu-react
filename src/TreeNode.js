@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import CloudFile from './CloudFile';
-import { useQuery, useApolloClient } from '@apollo/react-hooks';
+import { useApolloClient } from '@apollo/react-hooks';
 import GET_FOLDER_DETAILS from './apollo/queries/GET_FOLDER_DETAILS'
 import './tree.css';
 

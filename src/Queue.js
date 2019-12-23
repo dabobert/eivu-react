@@ -1,8 +1,8 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { QueueContext } from './App'
 
 function Queue(props) {
-  const [queue, setQueue] = useContext(QueueContext);
+  const [ queue ] = useContext(QueueContext);
 
   function displayRow(row, index) {
     return(

@@ -14,9 +14,10 @@ const ActiveTabContext = createContext();
 function App(props) {
 
   const [ queue, setQueue ] = useState(props.queue);
+  const [ queueIndex, setQueueIndex ] = useState(0)
   const [ activeTab, setActiveTab ] = useState(props.leftNavItems[1]);
   return (
-    <QueueContext.Provider value={[queue, setQueue]}>
+    <QueueContext.Provider value={[queue, setQueue, queueIndex, setQueueIndex]}>
       <Header />
       <div id="wrapper">
         <ActiveTabContext.Provider value={[activeTab, setActiveTab]}>    

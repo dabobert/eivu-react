@@ -1,4 +1,4 @@
-import React, { useEffect, useContext,useState } from 'react';
+import React, { useContext,useState } from 'react';
 // import Plyr from 'plyr'; 
 import { QueueContext } from './App'
 // import 'plyr/dist/plyr.css';
@@ -7,8 +7,8 @@ import PropTypes from "prop-types";
 
 
 function Player(props) {
-  const [ queueIndex, setQueueIndex ] = useState(0)
-  const [ queue, setQueue ] = useContext(QueueContext);
+  // const [  ] = useState(0)
+  const [ queue, setQueue, queueIndex, setQueueIndex ] = useContext(QueueContext);
   const [ trackSource, setTrackSource ] = useState(queue[queueIndex].src)
 
   function handleEnd(event) {

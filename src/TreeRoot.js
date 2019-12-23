@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect} from 'react';
+import React from 'react';
 import TreeNode from './TreeNode';
 import { useQuery } from '@apollo/react-hooks';
 import GET_FOLDER_DETAILS from './apollo/queries/GET_FOLDER_DETAILS'
