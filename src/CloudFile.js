@@ -35,7 +35,7 @@ function CloudFile(props) {
         <div className="col-xs-1">{ file.releasePos && file.releasePos.toString().padStart(2,0) }</div>
         <div className="col-xs-4">{ file.name }</div>
         <div className="col-xs-7 controls">
-          <a onClick={handleClickPlay}>
+          <a href="/" onClick={handleClickPlay}>
             <i className="fas fa-play"></i>
           </a>
 {/*          <span v-if="isPlaying">
@@ -48,10 +48,10 @@ function CloudFile(props) {
               <i className="fas fa-play" @click="play"></i>
             </a>
           </span>*/}
-          <a onClick={handleClickAdd}>
+          <a href="/" onClick={handleClickAdd}>
             <i className="fas fa-plus"></i>
           </a>
-          <a href={file.url} target="_blank">
+          <a href={file.url} target="_blank noopener noreferrer">
             <i className="fas fa-external-link-alt"></i>
           </a>
         </div>

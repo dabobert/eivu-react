@@ -1,4 +1,4 @@
-import React, { useContext,useState } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 // import Plyr from 'plyr'; 
 import { QueueContext } from './App'
 // import 'plyr/dist/plyr.css';
@@ -9,29 +9,33 @@ import PropTypes from "prop-types";
 function Player(props) {
   // const [  ] = useState(0)
   const [ queue, setQueue, queueIndex, setQueueIndex ] = useContext(QueueContext);
-  const [ trackSource, setTrackSource ] = useState(queue[queueIndex].src)
+  // const [ trackSource, setTrackSource ] = useState(queue[queueIndex].src)
+  const mediaNode = useRef(null);
+
+
+  useEffect(() => {
+    // setTrackSource(queue[queueIndex].src);
+    mediaNode.current.load();
+
+    if(queueIndex > 0)
+      mediaNode.current.play();
+
+
+console.log("index: " + queueIndex)
+console.log("queue: " + queue.map(item => item.asset))
+// console.log("trackSource: " + trackSource)
+  },[queueIndex])
+
 
   function handleEnd(event) {
     //update numPlays for track
     setQueueIndex((prevQueueIndex) => {
-      if(prevQueueIndex == queue.length - 1)
+      if(prevQueueIndex == queue.length - 1) {
         return 0
+      }
       else
         return prevQueueIndex + 1
     })
-
-
-    // setTrackSource(queue[queueIndex].src);
-    event.target.load();
-
-    if(queueIndex > 0)
-      event.target.play();
-
-
-console.log("index: " + queueIndex)
-console.log("queue: " + queue)
-// console.log("trackSource: " + trackSource)
-
   }
 
   function currentTrackSource() {
@@ -42,7 +46,7 @@ console.log("queue: " + queue)
   }
 
   return (
-    <audio id='player' onEnded={handleEnd} controls preload="auto">
+    <audio id='player' ref={mediaNode} onEnded={handleEnd} controls preload="auto">
       <source src={queue[queueIndex].src} type="audio/mpeg" />
     </audio>
   )

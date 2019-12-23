@@ -5,7 +5,7 @@ function NowPlaying() {
   const [ queue, setQueue, queueIndex, setQueueIndex ] = useContext(QueueContext);
   const currentTrack = queue[queueIndex];
   return(
-    <dl class="dl-horizontal">
+    <dl className="dl-horizontal">
       {  
         Object.keys(currentTrack).map(key => 
           <Fragment>
