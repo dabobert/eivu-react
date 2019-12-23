@@ -32,7 +32,7 @@ function CloudFile(props) {
   return(
     <div className="cloud_file">
       <div className="row">
-        <div className="col-xs-1">{ file.release_pos && file.release_pos.toString().padStart(2,0) }</div>
+        <div className="col-xs-1">{ file.releasePos && file.releasePos.toString().padStart(2,0) }</div>
         <div className="col-xs-4">{ file.name }</div>
         <div className="col-xs-7 controls">
           <a onClick={handleClickPlay}>

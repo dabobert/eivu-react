@@ -3,6 +3,7 @@ import TreeRoot from './TreeRoot';
 import './App.scss';
 import Player from './Player';
 import Sidebar from './Sidebar';
+import NowPlaying from './NowPlaying';
 import Header from './Header';
 import PropTypes from "prop-types";
 import Queue from './Queue'
@@ -27,7 +28,7 @@ function App(props) {
           <div id="main">
             <h1>{activeTab}</h1>
 
-            { activeTab === 'Now Playing' && <h1>info</h1> }
+            { activeTab === 'Now Playing' && <NowPlaying /> }
             { activeTab === 'Library' && <TreeRoot /> }
             { activeTab === 'Queue' && <Queue />}
             <div id="plyr_wrapper" className="audio"> 
