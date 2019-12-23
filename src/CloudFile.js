@@ -3,30 +3,31 @@ import { QueueContext } from './App'
 import './tree.css';
 
 function CloudFile(props) {
-
-  const [queue, setQueue] = useContext(QueueContext);
+  const [ queue, setQueue, queueIndex, setQueueIndex ] = useContext(QueueContext);
   const file = props.node
-
 
   function currentFile() {
     return props.node
   }
 
   function handleClickPlay(event) {
+    event.preventDefault();
     setQueue([
       currentFile()
     ]);
-    event.preventDefault();
+    setQueueIndex(0);
+    document.getElementById("player").load();
+    document.getElementById("player").play();
   }
 
   function handleClickAdd(event) {
+    event.preventDefault();
     setQueue((prevQueue) =>
       [
         ...prevQueue,
         currentFile()
       ]
     );
-    event.preventDefault();
   }
 
   return(
