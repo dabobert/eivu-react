@@ -52,9 +52,18 @@ App.defaultProps = {
     {
       url: 'http://eivu.s3.amazonaws.com/welcome.mp3',
       type: 'audio/mp3',
-      asset: 'welcome.mp3'
+      asset: 'welcome.mp3',
+      // artists: [{
+      //   name: "eivu"
+      // }]
       // size: 720,
-    }
+    },
+    // {
+    //   url: 'http://eivu.s3.amazonaws.com/bbb_intro.mp4',
+    //   type: 'video/mp4',
+    //   asset: 'welcome.mp4'
+    //   // size: 720,
+    // }
   ]
 }
 

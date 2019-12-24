@@ -8,6 +8,8 @@ const GET_FOLDER_DETAILS = gql`
         name
         klass
         entryType
+        cloudFilesCount
+        subfoldersCount
         domUuid
       }
       ... on CloudFile {
