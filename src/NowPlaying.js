@@ -32,10 +32,6 @@ function NowPlaying() {
             default:
               return renderPair(key, value);
           }
-          // <Fragment key={key}>
-          //   <dt>{key}</dt>
-          //   <dd>{Array.isArray(currentTrack[key]) ? currentTrack[key].map(hash => hash.name) : currentTrack[key]}</dd>
-          // </Fragment>
         }) }
     </dl>
   )
