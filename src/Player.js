@@ -1,7 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
-// import Plyr from 'plyr'; 
 import { QueueContext } from './App'
-// import 'plyr/dist/plyr.css';
 import './Player.scss';
 import PropTypes from "prop-types";
 
@@ -15,11 +13,6 @@ function Player(props) {
 
     if(queueIndex > 0)
       mediaNode.current.play();
-
-    console.log("index: " + queueIndex)
-    console.log("queue: " + queue.map(item => item.asset))
-    console.log("current: " + queue[queueIndex].asset)
-
   },[queueIndex])
 
 
@@ -42,9 +35,25 @@ function Player(props) {
   // }
 
   return (
+  // <div>
+  //   <div className="container">
+
+  //     <div className="row">
+  //       <div className="col-xs-4"><i class="fas fa-step-backward"></i></div>
+  //       <div className="col-xs-4"><i class="far fa-play-circle"></i>{ queue[queueIndex].name || queue[queueIndex].asset }</div>
+  //       <div className="col-xs-4"><i class="fas fa-step-forward"></i></div>
+  //     </div>
+  //   </div>
+
+  //   <audio id='player' ref={mediaNode} onEnded={handleEnd} controls preload="auto">
+  //     <source src={queue[queueIndex].url} type="audio/mpeg" />
+  //   </audio>
+  // </div>
     <audio id='player' ref={mediaNode} onEnded={handleEnd} controls preload="auto">
       <source src={queue[queueIndex].url} type="audio/mpeg" />
     </audio>
+
+
   )
   
 }
