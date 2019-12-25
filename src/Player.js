@@ -31,7 +31,12 @@ function Player() {
       <div className="container">
         <div className="row">
           <div className="col-xs-1"><i class="fas fa-step-backward" /></div>
-          <div className="col-xs-10">{ queue[queueIndex].asset || queue[queueIndex].name }</div>
+          <div className="col-xs-10">
+            <span style={{ fontSize: "20px" }}>
+              <i class="fas fa-play-circle"></i>
+            </span>
+            { queue[queueIndex].asset || queue[queueIndex].name }
+          </div>
           <div className="col-xs-1"><i class="fas fa-step-forward" /></div>
         </div>
       </div>
