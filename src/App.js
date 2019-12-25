@@ -12,10 +12,15 @@ const QueueContext = createContext();
 const ActiveTabContext = createContext();
 
 function App(props) {
-
   const [ queue, setQueue ] = useState(props.queue);
-  const [ queueIndex, setQueueIndex ] = useState(0)
+  const [ queueIndex, setQueueIndex ] = useState(0);
+  const [ currentMediaType, setCurrentMediaType ] = useState(null);
   const [ activeTab, setActiveTab ] = useState(props.leftNavItems[1]);
+
+  useEffect(() => {
+    setCurrentMediaType(queue[queueIndex].contentType.split("/",1)[0]);
+  },[queueIndex])
+
   return (
     <QueueContext.Provider value={[queue, setQueue, queueIndex, setQueueIndex]}>
       <Header />
@@ -32,7 +37,7 @@ function App(props) {
             { activeTab === 'Now Playing' && <NowPlaying /> }
             { activeTab === 'Library' && <TreeRoot /> }
             { activeTab === 'Queue' && <Queue />}
-            <div id="plyr_wrapper" className="audio"> 
+            <div id="plyr_wrapper" className={currentMediaType}> 
               <div id="plyr_buffer"></div>
               <div id="plyr_container">
                 <Player />
@@ -49,21 +54,21 @@ function App(props) {
 App.defaultProps = {
   leftNavItems: ['Now Playing', 'Library', 'Queue'],
   queue: [
-    {
-      url: 'http://eivu.s3.amazonaws.com/welcome.mp3',
-      type: 'audio/mp3',
-      asset: 'welcome.mp3',
-      // artists: [{
-      //   name: "eivu"
-      // }]
-      // size: 720,
-    },
     // {
-    //   url: 'http://eivu.s3.amazonaws.com/bbb_intro.mp4',
-    //   type: 'video/mp4',
-    //   asset: 'welcome.mp4'
+    //   url: 'http://eivu.s3.amazonaws.com/welcome.mp3',
+    //   contentType: 'audio/mp3',
+    //   asset: 'welcome.mp3',
+    //   // artists: [{
+    //   //   name: "eivu"
+    //   // }]
     //   // size: 720,
-    // }
+    // },
+    {
+      url: 'http://eivu.s3.amazonaws.com/bbb_intro.mp4',
+      contentType: 'video/mp4',
+      asset: 'welcome.mp4'
+      // size: 720,
+    }
   ]
 }
 

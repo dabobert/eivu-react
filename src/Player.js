@@ -49,9 +49,13 @@ function Player(props) {
   //     <source src={queue[queueIndex].url} type="audio/mpeg" />
   //   </audio>
   // </div>
-    <audio id='player' ref={mediaNode} onEnded={handleEnd} controls preload="auto">
-      <source src={queue[queueIndex].url} type="audio/mpeg" />
-    </audio>
+    // <audio id='player' ref={mediaNode} onEnded={handleEnd} controls preload="auto">
+    //   <source src={queue[queueIndex].url} type="audio/mpeg" />
+    // </audio>
+
+    <video id='player' ref={mediaNode} controls>
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+    </video>
 
 
   )
