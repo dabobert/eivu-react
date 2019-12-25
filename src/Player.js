@@ -35,20 +35,6 @@ function Player(props) {
   // }
 
   return (
-  // <div>
-  //   <div className="container">
-
-  //     <div className="row">
-  //       <div className="col-xs-4"><i class="fas fa-step-backward"></i></div>
-  //       <div className="col-xs-4"><i class="far fa-play-circle"></i>{ queue[queueIndex].name || queue[queueIndex].asset }</div>
-  //       <div className="col-xs-4"><i class="fas fa-step-forward"></i></div>
-  //     </div>
-  //   </div>
-
-  //   <audio id='player' ref={mediaNode} onEnded={handleEnd} controls preload="auto">
-  //     <source src={queue[queueIndex].url} type="audio/mpeg" />
-  //   </audio>
-  // </div>
     // <audio id='player' ref={mediaNode} onEnded={handleEnd} controls preload="auto">
     //   <source src={queue[queueIndex].url} type="audio/mpeg" />
     // </audio>
