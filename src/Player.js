@@ -41,7 +41,7 @@ function Player() {
 
   return (
     <div>
-      <div className="container controls">
+      <div id="infoControls" className="container">
         <div className="row">
           <div className="col-xs-1">
             <a href={void(0)} onClick={decrement}>
@@ -49,9 +49,6 @@ function Player() {
             </a>
           </div>
           <div className="col-xs-10">
-{/*            <span id="playButton">
-              <i className="fas fa-play-circle"></i>
-            </span>*/}
             <span>
               { queue[queueIndex].asset || queue[queueIndex].name }
             </span>
@@ -63,14 +60,18 @@ function Player() {
           </div>
         </div>
       </div>
-
-{/*     <audio id='player' ref={mediaNode} onEnded={handleEnd} controls preload="auto">
-       <source src={queue[queueIndex].url} type="audio/mpeg" />
-     </audio>*/}
-
-      <video id='player' ref={mediaNode} onEnded={handleEnd} controls preload="auto">
-        <source src={queue[queueIndex].url} type={queue[queueIndex].contentType}/>
-      </video>
+      {
+        queue[queueIndex].contentType.startsWith("audio") &&
+        <audio id='player' ref={mediaNode} onEnded={handleEnd} controls preload="auto">
+          <source src={queue[queueIndex].url} type={queue[queueIndex].contentType} />
+        </audio>
+      }
+      {
+        queue[queueIndex].contentType.startsWith("video") &&
+        <video id='player' ref={mediaNode} onEnded={handleEnd} controls preload="auto">
+          <source src={queue[queueIndex].url} type={queue[queueIndex].contentType}/>
+        </video>
+      }
     </div>
   )
 }

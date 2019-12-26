@@ -34,7 +34,7 @@ function CloudFile(props) {
     <div className="cloud_file container">
       <div className="row">
         <div className="col-xs-1">{ file.releasePos && file.releasePos.toString().padStart(2,0) }</div>
-        <div className="col-xs-4">{ file.name }</div>
+        <div className="col-xs-4">{ file.name || file.asset }</div>
         <div className="col-xs-7 controls">
           <a href={void(0)} onClick={handleClickPlay}>
             <i className="fas fa-play"></i>

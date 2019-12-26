@@ -32,6 +32,16 @@ video {
 
 
 
+#plyr_wrapper {
+  #plyr_container {
+    #infoControls {
+      z-index: 10
+    }
+  }    
+}
+
+
+
 #plyr_wrapper.video {
 
   #plyr_buffer {
@@ -74,6 +84,8 @@ video {
     right: 0;
     bottom: 0;
     height: 60px;
+
+
 
 
     .plyr--audio {
