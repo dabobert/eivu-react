@@ -9,11 +9,25 @@ audio::-webkit-media-controls-panel {
 
 video {
    right: 10px;
-   position:fixed;
+   position: fixed;
    bottom:35px;
    z-index:300;
    padding-bottom: 5px; 
 }
+
+
+#plyr_container {
+
+  // background-color: red !important;
+  // .container.controls {
+  //   line-height: 20px
+
+  //   #playButton {
+  //     font-size: 20px;
+  //   }
+  // }
+}
+
 
 
 #plyr_wrapper.video {

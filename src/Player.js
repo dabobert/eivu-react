@@ -15,7 +15,9 @@ function Player() {
   },[queueIndex])
 
 
-  function handleEnd(event) {
+  function handleEnd(event) { increment() }
+
+  function increment() {
     //update numPlays for track
     setQueueIndex((prevQueueIndex) => {
       if(prevQueueIndex + 1 == queue.length) {
@@ -28,16 +30,22 @@ function Player() {
 
   return (
     <div>
-      <div className="container">
+      <div className="container controls">
         <div className="row">
-          <div className="col-xs-1"><i class="fas fa-step-backward" /></div>
+          <div className="col-xs-1"><i className="fas fa-step-backward" /></div>
           <div className="col-xs-10">
-            <span style={{ fontSize: "20px" }}>
-              <i class="fas fa-play-circle"></i>
+{/*            <span id="playButton">
+              <i className="fas fa-play-circle"></i>
+            </span>*/}
+            <span>
+              { queue[queueIndex].asset || queue[queueIndex].name }
             </span>
-            { queue[queueIndex].asset || queue[queueIndex].name }
           </div>
-          <div className="col-xs-1"><i class="fas fa-step-forward" /></div>
+          <div className="col-xs-1">
+            <a href="/" onClick={increment}>
+              <i className="fas fa-step-forward" />
+            </a>
+          </div>
         </div>
       </div>
 
@@ -45,11 +53,10 @@ function Player() {
        <source src={queue[queueIndex].url} type="audio/mpeg" />
      </audio>*/}
 
-      <video id='player' ref={mediaNode} controls>
-        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+      <video id='player' ref={mediaNode} onEnded={handleEnd} controls preload="auto">
+        <source src={queue[queueIndex].url} type={queue[queueIndex].contentType}/>
       </video>
     </div>
-
   )
 }
 
