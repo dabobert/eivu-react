@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect} from 'react';
+// import {ReactFlvPlayer} from 'react-flv-player'
 import TreeRoot from './TreeRoot';
 import './App.scss';
 import Player from './Player';
@@ -33,7 +34,12 @@ function App(props) {
         <div id="main-wrapper" className="col-md-11 pull-right">
           <div id="main">
             <h1>{activeTab}</h1>
-
+{/*<ReactFlvPlayer
+  url = "http://eivutest.s3.amazonaws.com/video-sample.flv"
+  heigh = "800px"
+  width = "800px"
+  isMuted={true}
+/>*/}
             { activeTab === 'Now Playing' && <NowPlaying /> }
             { activeTab === 'Library' && <TreeRoot /> }
             { activeTab === 'Queue' && <Queue />}

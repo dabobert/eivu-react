@@ -1,5 +1,6 @@
 audio {
   width: 100%;
+  margin-top: -16px;
 }
 
 audio::-webkit-media-controls-panel {
@@ -10,7 +11,7 @@ audio::-webkit-media-controls-panel {
 video {
   right: 10px;
   position: fixed;
-  bottom:35px;
+  bottom:25px;
   z-index:300;
   padding-bottom: 5px;
   width: auto;
@@ -34,8 +35,12 @@ video {
 
 #plyr_wrapper {
   #plyr_container {
-    #infoControls {
-      z-index: 10
+    #infoControls div.row div {
+      z-index: 10;
+      a {
+        color: black;
+        cursor: pointer;
+      }
     }
   }    
 }
@@ -59,7 +64,7 @@ video {
     left: 0;
     right: 0;
     bottom: 0;
-    height: 40px;
+    height: 30px;
   }    
 }
 
