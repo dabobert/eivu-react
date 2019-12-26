@@ -28,11 +28,26 @@ function Player() {
     })
   }
 
+  function decrement() {
+    //update numPlays for track
+    setQueueIndex((prevQueueIndex) => {
+      if(prevQueueIndex - 1 < 0) {
+        return 0
+      }
+      else
+        return prevQueueIndex - 1
+    })
+  }
+
   return (
     <div>
       <div className="container controls">
         <div className="row">
-          <div className="col-xs-1"><i className="fas fa-step-backward" /></div>
+          <div className="col-xs-1">
+            <a href={void(0)} onClick={decrement}>
+              <i className="fas fa-step-backward" />
+            </a>
+          </div>
           <div className="col-xs-10">
 {/*            <span id="playButton">
               <i className="fas fa-play-circle"></i>
@@ -42,7 +57,7 @@ function Player() {
             </span>
           </div>
           <div className="col-xs-1">
-            <a href="/" onClick={increment}>
+            <a href={void(0)} onClick={increment}>
               <i className="fas fa-step-forward" />
             </a>
           </div>

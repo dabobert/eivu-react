@@ -3,7 +3,7 @@ import { ActiveTabContext } from './App';
 
 function Sidebar(props) {
   const [ activeTab, setActiveTab ] = useContext(ActiveTabContext);
-  const itemComponents = props.items.map(label => <li key={label}><a href="/" onClick={handleAnchorClick} data-label={label} className={props.itemAnchorClassName}>{label}</a></li>)
+  const itemComponents = props.items.map(label => <li key={label}><a href={void(0)} onClick={handleAnchorClick} data-label={label} className={props.itemAnchorClassName}>{label}</a></li>)
 
   function handleAnchorClick(event) {
     event.preventDefault();
