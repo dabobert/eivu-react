@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
+import { ReactFlvPlayer } from 'react-flv-player'
 import { QueueContext } from './App'
 import './Player.scss';
 
@@ -71,6 +72,15 @@ function Player() {
         <video id='player' ref={mediaNode} onEnded={handleEnd} controls preload="auto">
           <source src={queue[queueIndex].url} type={queue[queueIndex].contentType}/>
         </video>
+      }
+      {
+        queue[queueIndex].contentType.startsWith("video") && queue[queueIndex].contentType.endsWith("flv") &&
+        <ReactFlvPlayer
+          url = {queue[queueIndex].url}
+          height = "800px"
+          width = "800px"
+          isMuted={true}
+        />
       }
     </div>
   )
