@@ -79,7 +79,6 @@ function Player() {
           url = {queue[queueIndex].url}
           height = "800px"
           width = "800px"
-          isMuted={true}
         />
       }
     </div>
